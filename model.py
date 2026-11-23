@@ -16,7 +16,12 @@ def sim(N, epsilon, t):
     H = scp.sparse.diags([eps_arr, t_arr, t_arr, [-t], [-t]], [0, -1, 1, 1-N, N-1]).toarray()
     
     #Created H, now diagonalising & finding eigenvalues
+    #H is hermitian with nearest neighbour & tight binding: eigh is optimal
     
+    tmp = np.linalg.eigh(H) #temporary variable - tuple
+    eig_vals = tmp[0]
+    #eig_vectors = np.transpose(tmp[1]) <-- test from earlier
+    print(eig_vals)
     
 """
 Epsilon along diagonals represents site energy on each atom;
@@ -25,3 +30,5 @@ Epsilon along diagonals represents site energy on each atom;
 """
 #print(H)
 #Generates correctly for a given N.
+
+sim(50, 3, 1)
