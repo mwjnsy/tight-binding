@@ -23,11 +23,13 @@ def sim(N, epsilon, t):
     eig_vals = tmp[0]
     eig_vectors = np.transpose(tmp[1]) #<-- test from earlier
     print(eig_vals)
-    print(eig_vectors[1:3])
-    plt.plot(eig_vectors[1])
-    plt.plot(eig_vectors[2])
-    plt.plot(eig_vectors[3])
-    plt.plot(eig_vectors[4])
+    
+    """
+    EACH EIGENVAL IS OOP WITH EACH OTHER; phase seems fixed
+    """
+    #print(eig_vectors[1:3])
+    for j in range(1, 4):
+        plt.plot(eig_vectors[2*j] - eig_vectors[2*j - 1])
     plt.show()
     
 """
@@ -38,4 +40,4 @@ Epsilon along diagonals represents site energy on each atom;
 #print(H)
 #Generates correctly for a given N.
 
-sim(100, 3, 1) #Test run, tweak as needed.
+sim(500, 3, 1) #Test run, tweak as needed.
