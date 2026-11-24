@@ -20,9 +20,9 @@ def sim(N, epsilon, t):
     
     tmp = np.linalg.eigh(H) #temporary variable - tuple
     eig_vals = tmp[0]
-    #eig_vectors = np.transpose(tmp[1]) <-- test from earlier
-    print(eig_vals)
-    
+    model = lambda x: epsilon - 2*t*np.cos(x) #x is in units of 2*pi*n/N
+    return eig_vals, model
+ 
 """
 Epsilon along diagonals represents site energy on each atom;
 -t terms account for interaction with neighbouring atoms, lowers energy of each state.
@@ -31,4 +31,4 @@ Epsilon along diagonals represents site energy on each atom;
 #print(H)
 #Generates correctly for a given N.
 
-sim(50, 3, 1)
+#sim(50, 3, 1)
