@@ -1,5 +1,5 @@
 """
-Generates plots for results of model1D; fits H' to -2tcos(ka) using X^2
+Generates plots for results of model1D; fits H to eps_0 - 2tcos(ka)
 """
 
 import matplotlib.pyplot as plt
@@ -12,7 +12,7 @@ def fit(vals, func):
     Assumes that eigh orders eigenfuncs consistently - a step of 2 should repeatedly
     choose eigenfuncs with the same sign of k
     
-    func must take input data, w/ other parameters predefined
+    func must take only input data, w/ other parameters predefined
     """
     
     N = len(vals)
@@ -22,8 +22,9 @@ def fit(vals, func):
     k_half = (pi/N) * ks
     #step of 2 creates half line, accounts for duplicate E values returned by model
     data_1000 = pi * np.linspace(0, 1, num=1000)
-    #actual = func(k_half)
+    actual = func(k_half)
     estimate = np.array(vals[::2])
+    print(max(abs(estimate - actual))) #Debug line
     
     plt.plot(k_half, estimate, label='Simulated', linestyle='--') #energy against k, half line
     plt.plot(data_1000, func(data_1000), label='Analytic 1000pts', color='#000000', alpha=0.6)
