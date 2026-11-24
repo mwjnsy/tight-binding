@@ -8,6 +8,7 @@ Eigenvalues of Hamiltonian are energies E_n of each wave w/ wavevector k
 """
 import scipy as scp
 import numpy as np
+import matplotlib.pyplot as plt
 
 def sim(N, epsilon, t):
     eps_arr = [epsilon] * N
@@ -20,8 +21,14 @@ def sim(N, epsilon, t):
     
     tmp = np.linalg.eigh(H) #temporary variable - tuple
     eig_vals = tmp[0]
-    #eig_vectors = np.transpose(tmp[1]) <-- test from earlier
+    eig_vectors = np.transpose(tmp[1]) #<-- test from earlier
     print(eig_vals)
+    print(eig_vectors[1:3])
+    plt.plot(eig_vectors[1])
+    plt.plot(eig_vectors[2])
+    plt.plot(eig_vectors[3])
+    plt.plot(eig_vectors[4])
+    plt.show()
     
 """
 Epsilon along diagonals represents site energy on each atom;
@@ -31,4 +38,4 @@ Epsilon along diagonals represents site energy on each atom;
 #print(H)
 #Generates correctly for a given N.
 
-sim(50, 3, 1)
+sim(100, 3, 1) #Test run, tweak as needed.
