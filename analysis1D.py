@@ -18,15 +18,17 @@ def fit(vals, func):
     N = len(vals)
     pi = np.pi   #both defined for convenience
     
-    ks = np.arange(N) #k vals in units of 2pi / Na, taking a=1
-    k_half = (pi / N) * ks[::2]
+    ks = np.arange(0, N, 2) #k vals in units of 2pi / Na, taking a=1
+    k_half = (pi/N) * ks
+    #step of 2 creates half line, accounts for duplicate E values returned by model
+    data_1000 = pi * np.linspace(0, 1, num=1000)
     actual = func(k_half)
     estimate = np.array(vals[::2])
     
-    plt.plot(k_half, estimate, label='Simulated') #energy against k, half line
-    plt.plot(k_half, actual, label='Analytic', color='#000000', linestyle='--') #a terms cancel
-    plt.xlabel(r"$k$ in radians")
-    plt.ylabel(r"Energy in arb. units")
+    plt.plot(k_half, estimate, label='Simulated', linestyle='--') #energy against k, half line
+    plt.plot(data_1000, func(data_1000), label='Analytic 1000pts', color='#000000', alpha=0.6)
+    plt.xlabel(r"$k$ / radians")
+    plt.ylabel(r"$E(k)$ / arb. units")
     plt.axhline(func(pi/2), label=r'$\epsilon_0$', linestyle=':', color='gray')
     plt.title("Half-line")
     plt.legend()

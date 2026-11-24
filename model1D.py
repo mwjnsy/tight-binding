@@ -28,7 +28,3 @@ Epsilon along diagonals represents site energy on each atom;
 -t terms account for interaction with neighbouring atoms, lowers energy of each state.
 -t terms on opposing corners are effects of boundary conditions for a finite ring
 """
-#print(H)
-#Generates correctly for a given N.
-
-#sim(50, 3, 1)
