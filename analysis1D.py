@@ -22,7 +22,7 @@ def fit(vals, func):
     k_half = (pi/N) * ks
     #step of 2 creates half line, accounts for duplicate E values returned by model
     data_1000 = pi * np.linspace(0, 1, num=1000)
-    actual = func(k_half)
+    #actual = func(k_half)
     estimate = np.array(vals[::2])
     
     plt.plot(k_half, estimate, label='Simulated', linestyle='--') #energy against k, half line
@@ -30,6 +30,6 @@ def fit(vals, func):
     plt.xlabel(r"$k$ / radians")
     plt.ylabel(r"$E(k)$ / arb. units")
     plt.axhline(func(pi/2), label=r'$\epsilon_0$', linestyle=':', color='gray')
-    plt.title("Half-line")
+    plt.title(r"Half-line for $E(K)$ in 1st Brillouin Zone")
     plt.legend()
     plt.show()
