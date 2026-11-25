@@ -21,7 +21,8 @@ def sim(N, epsilon, t):
     tmp = np.linalg.eigh(H) #temporary variable - tuple
     eig_vals = tmp[0]
     model = lambda x: epsilon - 2*t*np.cos(x) #x is in units of 2*pi*n/N
-    return eig_vals, model
+    velocity = lambda x: 2*t*np.sin(x) #Derivative of model for group velocity calculation
+    return eig_vals, model, velocity
  
 """
 Epsilon along diagonals represents site energy on each atom;

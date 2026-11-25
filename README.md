@@ -1,6 +1,6 @@
 # Tight Binding of a 1D Chain
 
-Simulation of tight binding in 1D chain of atoms: calculates energy bands for a monoatomic loop with N atoms and all electrons in the 1s orbital.
+Simulation of tight binding in 1D chain of atoms: calculates energy bands for a monoatomic loop with N atoms of valence 1, and all electrons in the 1s orbital.
 Agrees with the analytic result $E(k) = \epsilon_0 -2t\cos{ka}$ to within $4 \times 10^{-15}$ for a 30 atom model.
 
 ## Results

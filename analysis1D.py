@@ -50,9 +50,26 @@ def group_vel(vals, func):
     """
     'func' here is d/dk{E(k)}. Should be 2tasin(ka) for 1D group velocity.
     Taking forward derivative of half-line data and X^2 fitting to func.
-    Steps are equal to pi / N
+    Steps are equal to 2pi / N (N/2 points are for negative k values - ignored.)
     """
+    data = initialise(vals) #get sample & analytic data to compare
+    x_sample, x_real = data[0], data[1]
+    step = data[0][1] #jump between neighbouring k points.
+    step_analytic = np.pi / 1000
+    y = np.array(vals[::2]) #half-line data for Energy
+    y_analytic = func(data[1]) #plots 1000 point data as the analytic derivative
+    
+    derivatives_f = np.array(((y[1:] - y[:-1]) / step) )#f(x+h) - f(x)
+    
     
     #X^2 CODE HERE
     
     #PLOT CODE HERE
+    plt.plot(x_real, y_analytic, label='Analytic', color='#000000')
+    plt.plot(x_sample[:-1], derivatives_f, label='Forward Estimate', linestyle='--', alpha=0.6)
+    #derivatives only defined up to last point
+    plt.xlabel(r"$k$ / radians")
+    plt.ylabel(r"Group Velocity $\frac{\partial E}{\partial k}$")
+    plt.title(r"Half-line group velocity $\frac{\partial E}{\partial k}$ estimated w/ varying methods")
+    plt.legend()
+    plt.show()
