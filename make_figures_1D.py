@@ -18,7 +18,7 @@ Due to the behaviour of np.eigh, odd values for N_Atoms tend to plot better.
 """
 
 Sim_Data = model1D.sim(N_Atoms, epsilon_0, t_hop)
-analysis1D.fit(Sim_Data[0], Sim_Data[1])
+analysis1D.fit(Sim_Data[0], Sim_Data[1]) #plots E(k) against k on half-line
 
 """
 Error convergence with increasing N here. --WIP--
